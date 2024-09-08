@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Title>WoW2.Backbone.Storage.Cache.InMemory.System</Title>
+        <PackageId>WoW2.Backbone.Storage.Cache.InMemory.System</PackageId>
+        <Description>System-based in-memory cache storage.</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>caching, in-memory, system, storage</PackageTags>
+        <Version>8.0.0-alpha.1</Version>
+        <Authors>WoW 2.0 Team</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache.InMemory.System</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache.InMemory.System</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageIcon>wow2.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="wow2.png" Pack="true" PackagePath=""/>
+        <None Include="README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0"/>
+        <PackageReference Include="DeepCloner" Version="0.10.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="WoW2.Backbone.Storage.Cache.Abstractions" Version="8.0.0-alpha.6"/>
+    </ItemGroup>
+
+</Project>

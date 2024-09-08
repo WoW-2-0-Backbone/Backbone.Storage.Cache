@@ -1,8 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backbone.Storage.Cache.Abstractions", "Backbone.Storage.Cache.Abstractions\Backbone.Storage.Cache.Abstractions.csproj", "{20EF9A73-5CFA-46A3-82A2-59EE92AC2972}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backbone.Storage.Cache.InMemory.System", "Backbone.Storage.Cache.InMemory.System\Backbone.Storage.Cache.InMemory.System.csproj", "{847D738A-6E3C-4EBD-8A7D-09B21A7AD22B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backbone.Storage.Cache.InMemory.Lazy", "Backbone.Storage.Cache.InMemory.Lazy\Backbone.Storage.Cache.InMemory.Lazy.csproj", "{5A8D0A23-FFA4-45CC-A34A-7F9A7F003840}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20EF9A73-5CFA-46A3-82A2-59EE92AC2972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20EF9A73-5CFA-46A3-82A2-59EE92AC2972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20EF9A73-5CFA-46A3-82A2-59EE92AC2972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20EF9A73-5CFA-46A3-82A2-59EE92AC2972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847D738A-6E3C-4EBD-8A7D-09B21A7AD22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847D738A-6E3C-4EBD-8A7D-09B21A7AD22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847D738A-6E3C-4EBD-8A7D-09B21A7AD22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847D738A-6E3C-4EBD-8A7D-09B21A7AD22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A8D0A23-FFA4-45CC-A34A-7F9A7F003840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8D0A23-FFA4-45CC-A34A-7F9A7F003840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8D0A23-FFA4-45CC-A34A-7F9A7F003840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8D0A23-FFA4-45CC-A34A-7F9A7F003840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -20,6 +20,8 @@ public static class InfraConfigurations
         services.Configure<CacheStorageSettings>(configuration.GetSection(nameof(CacheStorageSettings)));
 
         // Register cache storage
-        services.AddSingleton<ICacheStorageBroker, LazyMemoryCacheStorageBroker>();
+        services
+            .AddLazyCache()
+            .AddSingleton<ICacheStorageBroker, LazyMemoryCacheStorageBroker>();
     }
 }

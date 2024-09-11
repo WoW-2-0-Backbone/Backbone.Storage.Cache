@@ -10,7 +10,7 @@
         <Description>System-based in-memory cache storage.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>caching, in-memory, system, storage</PackageTags>
-        <Version>8.0.0-alpha.1</Version>
+        <Version>8.0.0-alpha.2</Version>
         <Authors>WoW 2.0 Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache.InMemory.System</PackageProjectUrl>
@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="WoW2.Backbone.Storage.Cache.Abstractions" Version="8.0.0-alpha.6"/>
+        <PackageReference Include="WoW2.Backbone.Storage.Cache.Abstractions" Version="8.0.0-alpha.7"/>
     </ItemGroup>
 
 </Project>

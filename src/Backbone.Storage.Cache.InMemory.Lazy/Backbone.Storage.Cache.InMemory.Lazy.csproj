@@ -10,7 +10,7 @@
         <Description>In-memory lazy cache storage.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>caching, in-memory, lazy, storage</PackageTags>
-        <Version>8.0.0-alpha.4</Version>
+        <Version>8.0.0-alpha.5</Version>
         <Authors>WoW 2.0 Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache</PackageProjectUrl>

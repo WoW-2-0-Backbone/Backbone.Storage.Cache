@@ -162,9 +162,9 @@ public class LazyMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cacheSe
         CacheEntryOptions? entryOptions = default,
         CancellationToken cancellationToken = default)
     {
-        if (HandleNullValueOnSet(value)) return new ValueTask<T>(value);
-        
-        LazyMemoryCacheStorage.Add(key, new CacheEntryWrapper<T>(value), GetCacheEntryOptions(entryOptions));
+        var skipCaching = HandleNullValueOnSet(value);
+        if (!skipCaching) LazyMemoryCacheStorage.Add(key, new CacheEntryWrapper<T>(value), GetCacheEntryOptions(entryOptions));
+    
         return new ValueTask<T>(value);
     }
 
@@ -185,9 +185,9 @@ public class LazyMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cacheSe
         CancellationToken cancellationToken = default)
     {
         var value = valueProvider();
-        if (HandleNullValueOnSet(value)) return new ValueTask<T>(value);
-
-        LazyMemoryCacheStorage.Add(key, new CacheEntryWrapper<T>(value), GetCacheEntryOptions(entryOptions));
+        var skipCaching = HandleNullValueOnSet(value);
+        if (!skipCaching) LazyMemoryCacheStorage.Add(key, new CacheEntryWrapper<T>(value), GetCacheEntryOptions(entryOptions));
+    
         return new ValueTask<T>(value);
     }
 
@@ -208,9 +208,9 @@ public class LazyMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cacheSe
         CancellationToken cancellationToken = default)
     {
         var value = await valueProvider(cancellationToken);
-        if (HandleNullValueOnSet(value)) return value;
+        var skipCaching = HandleNullValueOnSet(value);
+        if (!skipCaching) LazyMemoryCacheStorage.Add(key, new CacheEntryWrapper<T>(value), GetCacheEntryOptions(entryOptions));
 
-        LazyMemoryCacheStorage.Add(key, new CacheEntryWrapper<T>(value), GetCacheEntryOptions(entryOptions));
         return value;
     }
 
@@ -224,21 +224,28 @@ public class LazyMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cacheSe
         LazyMemoryCacheStorage.Remove(key);
         return ValueTask.CompletedTask;
     }
-    
+
     /// <summary>
     /// Handles null value based on the cache settings.
     /// </summary>
     /// <param name="value">A cache entry value</param>
+    /// <exception cref="ArgumentOutOfRangeException">If incorrect enum value is set.</exception>
     /// <typeparam name="T">The type of cache entry value</typeparam>
     /// <exception cref="ArgumentNullException">If storing null value is disabled and provided value is null</exception>
     protected virtual bool HandleNullValueOnSet<T>(T value)
     {
-        if (CacheSettings.NullValueOnSetBehavior == NullValueOnSetBehavior.Throw && value is null)
-            throw new ArgumentNullException(nameof(value), "Failed to store null value in cache storage, storing null value is disabled");
+        if (value is not null) return false;
 
-        return CacheSettings.NullValueOnSetBehavior != NullValueOnSetBehavior.Ignore || value is not null;
+        return CacheSettings.NullValueOnSetBehavior switch
+        {
+            NullValueOnSetBehavior.Throw => throw new ArgumentNullException(nameof(value),
+                "Failed to store null value in cache storage, storing null value is disabled"),
+            NullValueOnSetBehavior.Ignore => true,
+            NullValueOnSetBehavior.Store => false,
+            _ => throw new ArgumentOutOfRangeException(nameof(CacheSettings.NullValueOnSetBehavior), "Unsupported null value behavior")
+        };
     }
-    
+
     /// <summary>
     /// Handles null value on get based on the cache settings.
     /// </summary>
@@ -249,9 +256,10 @@ public class LazyMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cacheSe
     protected virtual T? HandleNullValueOnGet<T>(CacheEntryWrapper<T>? value)
     {
         if (value is null) return default;
-        
+
         if (CacheSettings.NullValueOnSetBehavior is NullValueOnSetBehavior.Throw or NullValueOnSetBehavior.Ignore && !value.HasValue)
-            throw new ArgumentNullException(nameof(value), "Failed to get value from cache storage, null value was stored and storing null value is disabled");
+            throw new ArgumentNullException(nameof(value),
+                "Failed to get value from cache storage, null value was stored and storing null value is disabled");
 
         return value.Value!;
     }

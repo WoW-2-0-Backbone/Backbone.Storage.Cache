@@ -10,7 +10,7 @@
         <Description>System-based in-memory cache storage.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>caching, in-memory, system, storage</PackageTags>
-        <Version>8.0.0-alpha.3</Version>
+        <Version>8.0.0-alpha.4</Version>
         <Authors>WoW 2.0 Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache</PackageProjectUrl>

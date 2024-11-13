@@ -170,9 +170,9 @@ public class SystemInMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cac
         CacheEntryOptions? entryOptions = default,
         CancellationToken cancellationToken = default)
     {
-        if (!HandleNullValueOnSet(value)) return new ValueTask<T>(value);
-
-        SystemMemoryCacheStorage.Set(key, value, GetCacheEntryOptions(entryOptions));
+        var skipCaching = HandleNullValueOnSet(value);
+        if (!skipCaching) SystemMemoryCacheStorage.Set(key, value, GetCacheEntryOptions(entryOptions));
+    
         return new ValueTask<T>(value);
     }
 
@@ -193,9 +193,9 @@ public class SystemInMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cac
         CancellationToken cancellationToken = default)
     {
         var value = valueProvider();
-        if (!HandleNullValueOnSet(value)) return new ValueTask<T>(value);
-
-        SystemMemoryCacheStorage.Set(key, value, GetCacheEntryOptions(entryOptions));
+        var skipCaching = HandleNullValueOnSet(value);
+        if (!skipCaching) SystemMemoryCacheStorage.Set(key, value, GetCacheEntryOptions(entryOptions));
+    
         return new ValueTask<T>(value);
     }
 
@@ -216,9 +216,9 @@ public class SystemInMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cac
         CancellationToken cancellationToken = default)
     {
         var value = await valueProvider(cancellationToken);
-        if (!HandleNullValueOnSet(value)) return value;
-
-        SystemMemoryCacheStorage.Set(key, value, GetCacheEntryOptions(entryOptions));
+        var skipCaching = HandleNullValueOnSet(value);
+        if (!skipCaching) SystemMemoryCacheStorage.Set(key, value, GetCacheEntryOptions(entryOptions));
+    
         return value;
     }
 
@@ -241,10 +241,16 @@ public class SystemInMemoryCacheStorageBroker(IOptions<CacheStorageSettings> cac
     /// <exception cref="ArgumentNullException">If storing null value is disabled and provided value is null</exception>
     protected virtual bool HandleNullValueOnSet<T>(T value)
     {
-        if (CacheSettings.NullValueOnSetBehavior == NullValueOnSetBehavior.Throw && value is null)
-            throw new ArgumentNullException(nameof(value), "Failed to store null value in cache storage, storing null value is disabled");
+        if (value is not null) return false;
 
-        return CacheSettings.NullValueOnSetBehavior != NullValueOnSetBehavior.Ignore || value is not null;
+        return CacheSettings.NullValueOnSetBehavior switch
+        {
+            NullValueOnSetBehavior.Throw => throw new ArgumentNullException(nameof(value),
+                "Failed to store null value in cache storage, storing null value is disabled"),
+            NullValueOnSetBehavior.Ignore => true,
+            NullValueOnSetBehavior.Store => false,
+            _ => throw new ArgumentOutOfRangeException(nameof(CacheSettings.NullValueOnSetBehavior), "Unsupported null value behavior")
+        };
     }
     
     /// <summary>

@@ -4,7 +4,7 @@ using Backbone.Storage.Cache.InMemory.Lazy.Brokers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Backbone.Storage.Cache.InMemory.Lazy.Configurations;
+namespace Backbone.Storage.Cache.InMemory.Lazy.DependencyInjection.Configurations;
 
 /// <summary>
 /// Provides extension methods to configure the cache storage.

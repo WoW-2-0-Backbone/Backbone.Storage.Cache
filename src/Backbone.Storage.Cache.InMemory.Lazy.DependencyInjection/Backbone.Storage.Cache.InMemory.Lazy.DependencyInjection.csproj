@@ -5,12 +5,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <Title>WoW2.Backbone.Storage.Cache.InMemory.Lazy</Title>
-        <PackageId>WoW2.Backbone.Storage.Cache.InMemory.Lazy</PackageId>
-        <Description>In-memory lazy cache storage.</Description>
+        <Title>WoW2.Backbone.Storage.Cache.InMemory.Lazy.DependencyInjection</Title>
+        <PackageId>WoW2.Backbone.Storage.Cache.InMemory.Lazy.DependencyInjection</PackageId>
+        <Description>Dependency injection setup for in-memory caching using LazyCache</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>caching, in-memory, lazy, storage</PackageTags>
-        <Version>8.0.0-alpha.4</Version>
+        <PackageTags>caching, in-memory, lazycache, dependency-injection, infrastructure</PackageTags>
+        <Version>8.0.0-alpha.1</Version>
         <Authors>WoW 2.0 Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache</PackageProjectUrl>
@@ -25,12 +25,12 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="LazyCache" Version="2.4.0"/>
-        <PackageReference Include="DeepCloner" Version="0.10.4" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+        <PackageReference Include="LazyCache.AspNetCore" Version="2.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="WoW2.Backbone.Storage.Cache.Abstractions" Version="8.0.0-alpha.9" />
+        <PackageReference Include="WoW2.Backbone.Storage.Cache.InMemory.Lazy" Version="8.0.0-alpha.4"/>
     </ItemGroup>
 
 </Project>

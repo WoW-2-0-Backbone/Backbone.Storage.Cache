@@ -34,6 +34,7 @@ public interface ICacheStorageBroker
     /// <param name="entryOptions">Custom cache entry options. If null, default options will be used.</param>
     /// <param name="onCacheHit">An action to be invoked if the key is found in the cache.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <exception cref="ArgumentNullException">If storing null value is disabled and passed value is null</exception>
     /// <returns>The value from cache if found; otherwise, the newly set value.</returns>
     ValueTask<T?> GetOrSetAsync<T>(
         string key,
@@ -51,6 +52,7 @@ public interface ICacheStorageBroker
     /// <param name="entryOptions">Custom cache entry options. If null, default options will be used.</param>
     /// <param name="onCacheHit">An action to be invoked if the key is found in the cache.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <exception cref="ArgumentNullException">If storing null value is disabled and provided value is null</exception>
     /// <returns>The value from cache if found; otherwise, the newly set value.</returns>
     ValueTask<T?> GetOrSetAsync<T>(
         string key,
@@ -69,6 +71,7 @@ public interface ICacheStorageBroker
     /// <param name="entryOptions">Custom cache entry options. If null, default options will be used.</param>
     /// <param name="onCacheHit">An action to be invoked if the key is found in the cache.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <exception cref="ArgumentNullException">If storing null value is disabled and provided value is null</exception>
     /// <returns>The value from cache if found; otherwise, the newly set value.</returns>
     ValueTask<T?> GetOrSetAsync<T>(
         string key,
@@ -86,6 +89,7 @@ public interface ICacheStorageBroker
     /// <param name="value">The value to store in the cache.</param>
     /// <param name="entryOptions">Custom cache entry options. If null, default options will be used.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <exception cref="ArgumentNullException">If storing null value is disabled and passed value is null</exception>
     /// <returns>The provided value.</returns>
     ValueTask<T> SetAsync<T>(
         string key,
@@ -102,6 +106,7 @@ public interface ICacheStorageBroker
     /// <param name="valueProvider">A function that provides the value to store in the cache.</param>
     /// <param name="entryOptions">Custom cache entry options. If null, default options will be used.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <exception cref="ArgumentNullException">If storing null value is disabled and provided value is null</exception>
     /// <returns>The value from the value factory.</returns>
     ValueTask<T> SetAsync<T>(
         string key,
@@ -118,6 +123,7 @@ public interface ICacheStorageBroker
     /// <param name="valueProvider">A function that provides the value to store in the cache.</param>
     /// <param name="entryOptions">Custom cache entry options. If null, default options will be used.</param>
     /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <exception cref="ArgumentNullException">If storing null value is disabled and provided value is null</exception>
     /// <returns>The value from the value factory.</returns>
     ValueTask<T> SetAsync<T>(
         string key,

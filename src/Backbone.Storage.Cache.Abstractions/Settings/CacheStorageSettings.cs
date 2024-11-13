@@ -1,4 +1,5 @@
-﻿using Backbone.Storage.Cache.Abstractions.Models;
+﻿using Backbone.Storage.Cache.Abstractions.Enums;
+using Backbone.Storage.Cache.Abstractions.Models;
 
 namespace Backbone.Storage.Cache.Abstractions.Settings;
 
@@ -16,6 +17,16 @@ public record CacheStorageSettings
     /// Gets the sliding expiration time for caching an item. 
     /// </summary>
     public uint SlidingExpirationInSeconds { get; init; }
+
+    /// <summary>
+    /// Gets the behavior of handling nullable values.
+    /// </summary>
+    public NullValueOnSetBehavior NullValueOnSetBehavior { get; init; }
+
+    /// <summary>
+    /// Gets the behavior of handling incorrect null values.
+    /// </summary>
+    public IncorrectNullValueOnGetBehavior IncorrectNullValueOnGetBehavior { get; init; } = IncorrectNullValueOnGetBehavior.Throw;
 
     /// <summary>
     /// Maps the cache settings to cache entry options.

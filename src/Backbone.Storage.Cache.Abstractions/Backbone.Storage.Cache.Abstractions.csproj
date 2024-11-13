@@ -10,18 +10,22 @@
         <Description>Abstractions for cache storage.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>caching, storage, abstractions</PackageTags>
-        <Version>8.0.0-alpha.7</Version>
+        <Version>8.0.0-alpha.9</Version>
         <Authors>WoW 2.0 Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache.Abstractions</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache.Abstractions</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageIcon>wow2.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="wow2.png" Pack="true" PackagePath=""/>
-        <None Include="README.md" Pack="true" PackagePath=""/>
+        <None Include="wow2.png" Pack="true" PackagePath="" />
+        <None Include="README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="WoW2.Backbone.Language.Core.Types.Abstractions" Version="8.0.0-alpha.0" />
     </ItemGroup>
 
 </Project>

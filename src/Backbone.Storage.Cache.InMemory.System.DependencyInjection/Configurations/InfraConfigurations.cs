@@ -1,10 +1,7 @@
-using Backbone.Storage.Cache.Abstractions.Brokers;
-using Backbone.Storage.Cache.Abstractions.Settings;
-using Backbone.Storage.Cache.InMemory.System.Brokers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Backbone.Storage.Cache.InMemory.System.Configurations;
+namespace Backbone.Storage.Cache.InMemory.System.DependencyInjection.Configurations;
 
 /// <summary>
 /// Provides extension methods to configure the cache storage.

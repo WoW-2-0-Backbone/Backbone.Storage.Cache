@@ -10,7 +10,7 @@
         <Description>Dependency injection setup for in-memory caching using System MemoryCache</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>caching, in-memory, system-memorycache, dependency-injection, infrastructure</PackageTags>
-        <Version>8.0.0-alpha.1</Version>
+        <Version>8.0.0-alpha.0</Version>
         <Authors>WoW 2.0 Team</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/WoW-2-0-Backbone/Backbone.Storage.Cache</PackageProjectUrl>
@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="WoW2.Backbone.Storage.Cache.InMemory.System" Version="8.0.0-alpha.3"/>
+        <PackageReference Include="WoW2.Backbone.Storage.Cache.InMemory.System" Version="8.0.0-alpha.3" />
     </ItemGroup>
     
 </Project>
